@@ -10,6 +10,8 @@ var morgan = require('morgan')
 morgan.token('request_body', (request) => JSON.stringify(request.body))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :request_body'))
 
+app.use(express.static('build'))
+
 const Person = require('./models/person')
 
 app.get('/api/persons', (request, response) => {
